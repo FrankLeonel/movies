@@ -18,3 +18,11 @@ body {
 #root {
   @apply flex flex-col min-h-screen;
 }
+
+.container-details {
+  @apply container mb-8 min-h-[780px] flex flex-col py-4 md:py-8 gap-2 md:gap-4;
+}
+
+.btn-favorite {
+  @apply absolute bottom-2 right-5 md:bottom-[10%] md:right-10 cursor-pointer;
+}
