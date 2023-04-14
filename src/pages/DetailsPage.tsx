@@ -1,9 +1,7 @@
+import Details from "@root/components/Details/Details";
+
 const DetailsPage = () => {
-  return (
-    <div>
-      <h1>Details</h1>
-    </div>
-  );
+  return <Details />;
 };
 
 export default DetailsPage;
