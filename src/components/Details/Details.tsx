@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { Movie } from "@root/interfaces/movie";
-import { addFavorite, removeFavorite } from "@root/assets/utils/favorites";
+import { addFavorite, removeFavorite } from "@root/utils/favorites";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
 import Skeleton from "@root/components/Skeleton";
+import Error from "@root/components/Error";
 import useMovie from "@root/hooks/useMovie";
 
 import "react-toastify/dist/ReactToastify.css";
@@ -59,7 +60,7 @@ const Details = () => {
   if (error) {
     return (
       <div className="container-details">
-        <h1>Erro ao carregar filme</h1>
+        <Error message="Não foi possível obter os detalhes do filme vindo da api, por favor, tente novamente mais tarde." />
       </div>
     );
   }
