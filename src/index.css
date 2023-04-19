@@ -19,6 +19,14 @@ body {
   @apply flex flex-col min-h-screen;
 }
 
+.grid-movies {
+  @apply container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4;
+}
+
+.arrow {
+  @apply hidden cursor-pointer absolute top-1/2 lg:block bg-gray-300 bg-opacity-10 hover:bg-opacity-25 p-3 rounded-full;
+}
+
 .container-details {
   @apply container mb-8 min-h-[780px] flex flex-col py-4 md:py-8 gap-2 md:gap-4;
 }
