@@ -3,9 +3,9 @@ import Content from "@root/components/Content";
 
 const Header = () => {
   return (
-    <header className="w-full flex justify-between items-center p-6 md:px-16 h-20 bg-gray-900 text-white">
-      <section className="w-full flex item-center justify-between">
-        <Content>
+    <header className="w-full flex items-center h-20 bg-gray-900 text-white">
+      <Content>
+        <section className="w-full h-auto flex items-center justify-between">
           <Link to="/">
             <h1 className="font-bold text-2xl md:text-3xl">Movies</h1>
           </Link>
@@ -15,8 +15,8 @@ const Header = () => {
           >
             Favorites
           </Link>
-        </Content>
-      </section>
+        </section>
+      </Content>
     </header>
   );
 };
