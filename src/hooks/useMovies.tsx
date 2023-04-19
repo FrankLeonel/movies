@@ -5,7 +5,7 @@ import { API_URL } from "@root/config/constants";
 const useMovies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
 
   useEffect(() => {
     (() => {
@@ -15,7 +15,7 @@ const useMovies = () => {
         .then((json) => {
           setMovies(json);
         })
-        .catch(() => setError("Erro ao carregar os filmes"))
+        .catch(() => setError(true))
         .finally(() => setLoading(false));
     })();
   }, []);

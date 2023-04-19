@@ -1,47 +1,39 @@
-import { Link, useNavigate } from "react-router-dom";
 import { Movie } from "@root/interfaces/movie";
 
 import Skeleton from "@root/components/Skeleton";
 import Slider from "@root/components/Slider";
+import MovieCard from "@root/components/MovieCard";
+import Error from "@root/components/Error";
 import useMovies from "@root/hooks/useMovies";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const { movies, loading } = useMovies();
+  const { movies, loading, error } = useMovies();
 
   if (loading) {
     return (
-      <div className="pt-4">
+      <div className="container pt-4">
         <Skeleton />
       </div>
     );
   }
 
+  if (error) {
+    return (
+      <div className="container pt-4">
+        <Error message="Não foi possível obter os filmes vindos da api, por favor, tente novamente mais tarde." />
+      </div>
+    );
+  }
+
   return (
-    <>
+    <div className="container h-full mb-14">
       <Slider slides={movies?.slice(0, 4) ?? movies} />
-      <ul className="container grid grid-cols-1 md:grid-cols-3 gap-4">
-        {...movies?.slice(4).map((movie: Movie) => (
-          <li
-            key={movie.id}
-            onClick={() => navigate(`details/${movie.id}`)}
-            className="flex flex-col gap-2 cursor-pointer"
-          >
-            <img
-              src={movie.foto}
-              alt={movie.nome}
-              className="rounded-lg hover:opacity-75 transition ease-in-out duration-150"
-            />
-            <span className="text-base md:text-lg font-bold text-white hover:text-gray-300 transition ease-in-out duration-150">
-              {movie.nome}
-            </span>
-            <span className="whitespace-nowrap overflow-hidden overflow-ellipsis text-sm md:text-base text-white hover:text-gray-300 transition ease-in-out duration-150">
-              {movie.sinopse}
-            </span>
-          </li>
-        ))}
+      <ul className="grid-movies">
+        {...movies
+          ?.slice(4)
+          .map((movie: Movie) => <MovieCard key={movie.id} movie={movie} />)}
       </ul>
-    </>
+    </div>
   );
 };
 export default Home;
